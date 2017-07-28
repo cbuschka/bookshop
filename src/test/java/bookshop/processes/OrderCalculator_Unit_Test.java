@@ -7,34 +7,45 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 public class OrderCalculator_Unit_Test
 {
+	private static final Product THE_2EUR_BOOK = new Product("The EUR 2 book", "2.0");
+	private static final Product THE_50CT_BOOK = new Product("The 50ct book", "0.33");
+	private static final Product THE_33CT_BOOK = new Product("The 0.33ct book", "0.33");
+
 	private OrderCalculator orderCalculator = new OrderCalculator();
+
+	private String total;
 
 	@Test
 	public void calcTotalSingleItem()
 	{
-		Product product = new Product("The 50ct book", "2.0");
-
 		Order order = new Order();
-		order.addItem(new OrderItem(product, 1));
-		String total = orderCalculator.getTotalFor(order);
+		order.addItem(new OrderItem(THE_2EUR_BOOK, 1));
+
+		whenTotalCaculated(order);
 
 		assertThat(total, is("2"));
+	}
+
+	private void whenTotalCaculated(Order order)
+	{
+		total = orderCalculator.getTotalFor(order);
 	}
 
 	@Test
 	public void calcTotalTwoItems()
 	{
-		Product product = new Product("The 50ct book", "0.33");
-		Product product2 = new Product("The 0.33ct book", "0.33");
-
 		Order order = new Order();
-		order.addItem(new OrderItem(product, 1));
-		order.addItem(new OrderItem(product2, 2));
+		order.addItem(new OrderItem(THE_50CT_BOOK, 1));
+		order.addItem(new OrderItem(THE_33CT_BOOK, 2));
+
 		String total = orderCalculator.getTotalFor(order);
 
 		assertThat(total, is("0.99"));
 	}
+
+	// FIXME big order?
 }

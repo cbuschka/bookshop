@@ -27,7 +27,6 @@ public class OrderCalculator
 			throw new UnsupportedOperationException("Cannot process order with more than 4 items.");
 		}
 
-
 		return total.toString();
 	}
 

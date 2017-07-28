@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class Order
 {
-	private Set<OrderItem> items = new HashSet<>();
+	private List<OrderItem> items = new ArrayList<>();
 
 	public Order()
 	{
@@ -16,14 +15,11 @@ public class Order
 
 	public void addItem(OrderItem item)
 	{
-		Set<OrderItem> newItems = new HashSet<>();
-		newItems.addAll(this.items);
-		newItems.add(item);
-		this.items = newItems;
+		this.items.add(item);
 	}
 
 	public List<OrderItem> getItems()
 	{
-		return new ArrayList<>(this.items);
+		return this.items;
 	}
 }
