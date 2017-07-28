@@ -36,6 +36,18 @@ public class OrderCalculator_Unit_Test
 	}
 
 	@Test
+	public void calcTotalTwoItemsEachOneOfIt()
+	{
+		Order order = new Order();
+		order.addItem(new OrderItem(THE_50CT_BOOK, 1));
+		order.addItem(new OrderItem(THE_33CT_BOOK, 1));
+
+		String total = orderCalculator.getTotalFor(order);
+
+		assertThat(total, is("0.88"));
+	}
+
+	@Test
 	public void calcTotalTwoItems()
 	{
 		Order order = new Order();
@@ -44,7 +56,7 @@ public class OrderCalculator_Unit_Test
 
 		String total = orderCalculator.getTotalFor(order);
 
-		assertThat(total, is("0.99"));
+		assertThat(total, is("1.16"));
 	}
 
 	// FIXME big order?
