@@ -18,6 +18,7 @@ mvn verify
 ## Task
 * Make it run
 * Make it right
+* Finish test for big orders
 
 ## License
 
