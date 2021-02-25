@@ -6,8 +6,7 @@ import bookshop.model.Product;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class OrderCalculator_Unit_Test
 {
@@ -15,7 +14,7 @@ public class OrderCalculator_Unit_Test
 	private static final Product THE_50CT_BOOK = new Product("The 50ct book", "0.33");
 	private static final Product THE_33CT_BOOK = new Product("The 0.33ct book", "0.33");
 
-	private OrderCalculator orderCalculator = new OrderCalculator();
+	private final OrderCalculator orderCalculator = new OrderCalculator();
 
 	private String total;
 
