@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.fail;
 
 public class OrderCalculator_Unit_Test
 {
@@ -58,5 +59,9 @@ public class OrderCalculator_Unit_Test
 		assertThat(total, is("1.16"));
 	}
 
-	// FIXME big order?
+	@Test
+	public void calcTotalOfBigOrderWithFiveItems()
+	{
+		fail("Not implemented, yet.");
+	}
 }
